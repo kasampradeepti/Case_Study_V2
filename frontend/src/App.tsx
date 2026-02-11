@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import HeaderBar from "./components/HeaderBar/HeaderBar";
+import KPISection from "./components/KPI/KPISection";
+import Filters from "./components/PerformanceAnalysis/Filters";
+import MetricSelector from "./components/PerformanceAnalysis/MetricSelector";
+import ChartContainer from "./components/ChartContainer/ChartContainer";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [metric, setMetric] = useState("energy");
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
+  const [grain, setGrain] = useState("day");
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app-container">
+      <HeaderBar />
+
+      <section className="section">
+        <h3>Real Time Performance</h3>
+        <KPISection />
+      </section>
+
+      <section className="section">
+        <h3>Performance Analysis</h3>
+
+        <div className="analysis-header">
+          <MetricSelector value={metric} onChange={setMetric} />
+
+          <Filters
+            fromDate={fromDate}
+            toDate={toDate}
+            grain={grain}
+            onFromChange={setFromDate}
+            onToChange={setToDate}
+            onGrainChange={setGrain}
+          />
+        </div>
+
+        <ChartContainer
+          metric={metric}
+          fromDate={fromDate}
+          toDate={toDate}
+          grain={grain}
+        />
+      </section>
+    </div>
+  );
 }
 
-export default App
+export default App;

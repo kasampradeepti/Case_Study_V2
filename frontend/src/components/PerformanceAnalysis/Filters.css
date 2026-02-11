@@ -1,0 +1,29 @@
+.filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.filter-label {
+  font-size: 13px;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filters input[type="date"],
+.filters select {
+  padding: 6px 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid #d0d7e2;
+  background-color: #ffffff;
+  color: #213547;
+}
+
+.filters input:focus,
+.filters select:focus {
+  outline: none;
+  border-color: #6366f1;
+}
