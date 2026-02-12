@@ -96,7 +96,7 @@ http://localhost:5173
     
 ### 2. What did you intentionally not implement, and why?
 - Caching – skipped to keep the backend simple.
-- Live streaming / real-time updates – not required for the assignment and would add unnecessary complexity.
+- Live streaming / real-time updates – For a Demo it would add unnecessary complexity.
 - Global state management – The application scope is small and the state is localized, so React’s local state was sufficient without adding extra complexity.
 
 ### 3. What would you change if this API had a 3-second latency?
