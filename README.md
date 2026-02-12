@@ -82,3 +82,33 @@ npm run dev
 ```
 Runs on:
 http://localhost:5173
+
+
+##  Performance & Scale Thinking 
+
+### 1. What part of your solution will break first as data scales?
+- Backend response size and computation time would become the next bottleneck as the date range and number of metrics grow.
+- Even with pagination, returning very large datasets in a single API response would increase network payload size and slow down responses.
+- Additionally, if the data updates frequently, automatically refetching it could cause the chart to reset and jump back to the starting view, which would interrupt the user’s experience.
+    
+### 2. What did you intentionally not implement, and why?
+- Caching – skipped to keep the backend simple.
+- Live streaming / real-time updates – not required for the assignment and would add unnecessary complexity.
+- Global state management – The application scope is small and the state is localized, so React’s local state was sufficient without adding extra complexity.
+
+### 3. What would you change if this API had a 3-second latency?
+- Add loading indicators so the UI remains responsive.
+- Debounce filter changes to prevent unnecessary requests when users adjust inputs quickly.
+- Introduce backend caching (Redis) or pre-aggregated metrics.
+
+### 4. What assumptions are you making about the data layer?
+- Metric values are pre-computed (e.g., PR, soiling loss) rather than calculated on the fly.
+- Timestamps are consistent and use a single time zone.
+- Missing or invalid data points are handled before reaching the API.
+    
+  
+
+  
+
+
+
