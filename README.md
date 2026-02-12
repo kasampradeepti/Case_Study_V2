@@ -1,6 +1,9 @@
 # Case_Study_V2
 This repository demonstrates V2 development for a solar performance analytics platform.
 
+## Dashboard
+
+![Dashboard](UI_Sample.jpg)
 ## Architecture Overview
 
 ## Frontend
